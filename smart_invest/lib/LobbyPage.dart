@@ -8,7 +8,7 @@ class LobbyPage extends StatelessWidget {
       child: RaisedButton(
         onPressed: () {
           
-          path == 1 ? Navigator.pushNamed(context, '/learn_page') : Navigator.pushNamed(context, '/practice_page') ;
+          path == 1 ? Navigator.pushNamed(context, '/learn_page') : Navigator.pushNamed(context, '/practice_navigation') ;
         },
         textColor: Colors.white,
         padding: const EdgeInsets.all(0.0),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'LobbyPage.dart';
 import 'LearnPage.dart';
+import 'PracticeNavigation.dart';
 
 void main() => runApp(MyApp());
 
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => LobbyPage(),
         // When navigating to the "/second" route, build the SecondScreen widget.
         '/learn_page': (context) => LearnPage(title: 'Tutorials'),
+        '/practice_navigation' : (context) => PracticeNavigation(),
       },
     );
   }
