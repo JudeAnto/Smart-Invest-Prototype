@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'PortfolioPage.dart';
-import 'dart:async';
 import 'PortfolioBuy.dart';
 import 'PortfolioSell.dart';
+import 'globals.dart' as globals;
 
 class PracticeNavigation extends StatefulWidget {
 
@@ -35,7 +35,7 @@ class _PracticeNavigationState extends State<PracticeNavigation> {
 
   //to allow for navigation on same nav item
   int getCurrentIndex(){
-    if(_selectedIndex == 3 || _selectedIndex == 4 || _selectedIndex == 0){
+    if(_selectedIndex == 3 || _selectedIndex == 4 || _selectedIndex == 0 || _selectedIndex == 5){
       return 0;
     }else if (_selectedIndex == 1){
       return 1;
@@ -47,7 +47,12 @@ class _PracticeNavigationState extends State<PracticeNavigation> {
   Widget getPageOption(){
     if(_selectedIndex == 0){
       return PortfolioPage(newIndexSelected: (int newIndex) => setPage(newIndex));
-    }else{
+    }else if(_selectedIndex == 3){
+      return PortfolioBuy(newIndexSelected: (int newIndex) => setPage(newIndex));
+    }else if(_selectedIndex == 5){
+      return BuyStockItem(stock: globals.currentStock);
+    }
+    else{
       return _pageOptions[_selectedIndex];
     }
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'PracticeNavigation.dart';
+import 'globals.dart' as globals;
 
 class PortfolioPage extends StatefulWidget{
   final Function(int) newIndexSelected;
@@ -78,10 +78,22 @@ class _PortfolioPageState extends State<PortfolioPage>{
       ),
       body:
       Container(
-        padding: EdgeInsets.only(left: 10, top: 20, right: 10),
-          child: Column(children: <Widget>[
-            Text("Total:", style: TextStyle(fontSize: 40)),
-            SizedBox(height: MediaQuery.of(context).size.height/1.6),
+        padding: EdgeInsets.only(left: 20, top: 50, right: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+            Text("Total: \$100,000", style: TextStyle(fontSize: 40)),
+            SizedBox(height: 30),
+            Text("Stocks Owned:", style: TextStyle(fontSize: 40)),
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.blue, width: 3),
+              ),
+              height: MediaQuery.of(context).size.height/2.5,
+              width: MediaQuery.of(context).size.width,
+              child: listViewBuild(),
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height/40),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
@@ -93,5 +105,21 @@ class _PortfolioPageState extends State<PortfolioPage>{
         )
     );
 
+  }
+
+  Widget listViewBuild(){
+    if(globals.allStocks.length > 0){
+      return ListView.builder(
+                itemCount: globals.allStocks.length,
+                itemBuilder: (BuildContext context, int index){
+                  return Container(
+                    margin: EdgeInsets.only(left: 5),
+                    child: Text("-" + globals.allStocks[index].name, style: TextStyle(fontSize: 20)),
+                  );
+                }
+              );
+    }else{
+      return Text("No stocks currently owned", style: TextStyle(fontSize: 20));
+    }
   }
 }
